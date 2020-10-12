@@ -26,9 +26,7 @@ Contains an iOS application built with Objective-C
 4. If using the Swift version navigate to AppDelegate.swift. If using the Objective-C version, navigate to AppDelegate.m.  
 5. Replace "sdkKey" and "sdkClient" with the values from your ZoomMarketplace SDK credentials.
 6. On a seperate device, or in a browser: Start a real Zoom meeting. Once the meeting has begun, obtain the meeting number and meeting password. 
-7. If using the Swift version navigate to ViewController.swift. If using the Objective-C version, navigate to ViewController.m. 
-8. Replace "yourMeetingNumber" and "yourMeetingPassword" with the meeting number and password of the meeting you just started. 
-9. Click run.
+7. Click run.
 
 ## Features
 
