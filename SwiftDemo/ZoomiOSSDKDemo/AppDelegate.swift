@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Obtain the MobileRTCAuthService from the Zoom SDK, this service can log in a Zoom user, log out a Zoom user, authorize the Zoom SDK etc.
         if let authorizationService = MobileRTC.shared().getAuthService() {
 
-            // Call logoutRTC() to log the user out. 
+            // Call logoutRTC() to log the user out.
             authorizationService.logoutRTC()
         }
     }
@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         context.domain = "zoom.us"
         // Turns on SDK logging. This is optional.
         context.enableLog = true
+        // Sets the appGroupID. This value must be valid to be able to use screensharing.
+        context.appGroupId = ""
 
         // Call initialize(_ context: MobileRTCSDKInitContext) to create an instance of the Zoom SDK. Without initializing first, the SDK will not do anything. This call will return true if the SDK was initialized successfully.
         let sdkInitializedSuccessfully = MobileRTC.shared().initialize(context)

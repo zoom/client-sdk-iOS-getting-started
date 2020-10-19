@@ -53,6 +53,8 @@
     context.domain = @"zoom.us";
     // Turns on SDK logging. This is optional.
     context.enableLog = YES;
+    // Sets the appGroupID. This value must be valid to be able to use screensharing.
+    context.appGroupId = @"";
 
     // Call initialize:(MobileRTCSDKInitContext *_Nonnull)context to create an instance of the Zoom SDK. Without initializing first, the SDK will not do anything. This call will return YES if the SDK was initialized successfully.
     BOOL sdkInitSuc = [[MobileRTC sharedRTC] initialize:context];
