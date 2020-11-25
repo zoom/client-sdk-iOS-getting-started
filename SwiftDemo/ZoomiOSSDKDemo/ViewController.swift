@@ -48,13 +48,13 @@ class ViewController: UIViewController {
     ///   - meetingNumber: The meeting number of the desired meeting.
     ///   - meetingPassword: The meeting password of the desired meeting.
     /// - Precondition:
-    ///   - Zoom SDK must be intitalized and authorized.
+    ///   - Zoom SDK must be initialized and authorized.
     ///   - MobileRTC.shared().setMobileRTCRootController() has been called.
     func joinMeeting(meetingNumber: String, meetingPassword: String) {
         // Obtain the MobileRTCMeetingService from the Zoom SDK, this service can start meetings, join meetings, leave meetings, etc.
         if let meetingService = MobileRTC.shared().getMeetingService() {
 
-            // Set the ViewContoller to be the MobileRTCMeetingServiceDelegate
+            // Set the ViewController to be the MobileRTCMeetingServiceDelegate
             meetingService.delegate = self
 
             // Create a MobileRTCMeetingJoinParam to provide the MobileRTCMeetingService with the necessary info to join a meeting.
@@ -74,10 +74,10 @@ class ViewController: UIViewController {
     /// Assign a MobileRTCAuthDelegate to listen to authorization events including onMobileRTCLoginReturn(_ returnValue: Int).
     ///
     /// - Parameters:
-    ///   - email: The user's email address attatched to their Zoom account.
-    ///   - password: The user's password attatched to their Zoom account.
+    ///   - email: The user's email address attached to their Zoom account.
+    ///   - password: The user's password attached to their Zoom account.
     /// - Precondition:
-    ///   - Zoom SDK must be intitalized and authorized.
+    ///   - Zoom SDK must be initialized and authorized.
     func logIn(email: String, password: String) {
         // Obtain the MobileRTCAuthService from the Zoom SDK, this service can log in a Zoom user, log out a Zoom user, authorize the Zoom SDK etc.
         if let authorizationService = MobileRTC.shared().getAuthService() {
@@ -91,13 +91,13 @@ class ViewController: UIViewController {
     /// Assign a MobileRTCMeetingServiceDelegate to listen to meeting events and start meeting status.
     ///
     /// - Precondition:
-    ///   - Zoom SDK must be intitalized and authorized.
+    ///   - Zoom SDK must be initialized and authorized.
     ///   - MobileRTC.shared().setMobileRTCRootController() has been called.
     ///   - User has logged into Zoom successfully.
     func startMeeting() {
         // Obtain the MobileRTCMeetingService from the Zoom SDK, this service can start meetings, join meetings, leave meetings, etc.
         if let meetingService = MobileRTC.shared().getMeetingService() {
-            // Set the ViewContoller to be the MobileRTCMeetingServiceDelegate
+            // Set the ViewController to be the MobileRTCMeetingServiceDelegate
             meetingService.delegate = self
 
             // Create a MobileRTCMeetingStartParam to provide the MobileRTCMeetingService with the necessary info to start an instant meeting.
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    /// Creates alert for prompting the user to enter thier Zoom credentials for starting a meeting.
+    /// Creates alert for prompting the user to enter their Zoom credentials for starting a meeting.
     func presentLogInAlert() {
         let alertController = UIAlertController(title: "Log in", message: "", preferredStyle: .alert)
 
@@ -188,10 +188,12 @@ extension ViewController: MobileRTCMeetingServiceDelegate {
     // Is called upon in-meeting errors, join meeting errors, start meeting errors, meeting connection errors, etc.
     func onMeetingError(_ error: MobileRTCMeetError, message: String?) {
         switch error {
-        case MobileRTCMeetError_PasswordError:
+        case .success:
+            print("Successful meeting operation.")
+        case .passwordError:
             print("Could not join or start meeting because the meeting password was incorrect.")
         default:
-            print("Could not join or start meeting with MobileRTCMeetError: \(error) \(message ?? "")")
+            print("MobileRTCMeetError: \(error) \(message ?? "")")
         }
     }
 

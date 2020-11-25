@@ -13,7 +13,7 @@ import MobileRTC
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Obtain your SDK Key and SDK Secret and paste it here.
-    // Your SDK Secret should NEVER be publically accessible, only use the sdk key and secret for testing this demo app.
+    // Your SDK Secret should NEVER be publicly accessible, only use the sdk key and secret for testing this demo app.
     // For your own application, you must obtain a JWT instead of using the SDK Key and SDK Secret.
     let sdkKey = ""
     let sdkSecret = ""
@@ -28,17 +28,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // Logs the user out of the app upon application termination.
-    // This is not a neccesary action. In real use cases, the SDK should be alerted of app events. For example, in applicationWillTerminate(_ application: UIApplication), MobileRTC.shared().appWillTerminate should be called.
+    // This is not a necessary action. In real use cases, the SDK should be alerted of app events. For example, in applicationWillTerminate(_ application: UIApplication), MobileRTC.shared().appWillTerminate should be called.
     func applicationWillTerminate(_ application: UIApplication) {
         // Obtain the MobileRTCAuthService from the Zoom SDK, this service can log in a Zoom user, log out a Zoom user, authorize the Zoom SDK etc.
         if let authorizationService = MobileRTC.shared().getAuthService() {
 
             // Call logoutRTC() to log the user out.
             authorizationService.logoutRTC()
+
+            // Notify MobileRTC of appWillTerminate call.
+            MobileRTC.shared().appWillTerminate()
         }
     }
 
-    /// Creates, Intializes, and Authorizes an instance of the Zoom SDK. This must be called before any other SDK functions.
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Notify MobileRTC of appWillResignActive call.
+        MobileRTC.shared().appWillResignActive()
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Notify MobileRTC of appDidBecomeActive call.
+        MobileRTC.shared().appDidBecomeActive()
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Notify MobileRTC of appDidEnterBackgroud call.
+        MobileRTC.shared().appDidEnterBackgroud()
+    }
+
+    /// Creates, Initializes, and Authorizes an instance of the Zoom SDK. This must be called before any other SDK functions.
     ///
     /// Assign a MobileRTCAuthDelegate to listen to SDK authorization events.
     ///
@@ -55,13 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         context.domain = "zoom.us"
         // Turns on SDK logging. This is optional.
         context.enableLog = true
-        // Sets the appGroupID. This value must be valid to be able to use screensharing.
-        context.appGroupId = ""
 
         // Call initialize(_ context: MobileRTCSDKInitContext) to create an instance of the Zoom SDK. Without initializing first, the SDK will not do anything. This call will return true if the SDK was initialized successfully.
         let sdkInitializedSuccessfully = MobileRTC.shared().initialize(context)
 
-        // Check if initializaiton was successful. Obtain a MobileRTCAuthService, this is for supplying credentials to the SDK for authorization.
+        // Check if initialization was successful. Obtain a MobileRTCAuthService, this is for supplying credentials to the SDK for authorization.
         if sdkInitializedSuccessfully == true, let authorizationService = MobileRTC.shared().getAuthService() {
 
             // Supply the SDK with SDK Key and SDK Secret. This is required if a JWT is not supplied.
@@ -87,11 +103,11 @@ extension AppDelegate: MobileRTCAuthDelegate {
     // Result of calling sdkAuth(). MobileRTCAuthError_Success represents a successful authorization.
     func onMobileRTCAuthReturn(_ returnValue: MobileRTCAuthError) {
         switch returnValue {
-        case MobileRTCAuthError_Success:
+        case .success:
             print("SDK successfully initialized.")
-        case MobileRTCAuthError_KeyOrSecretEmpty:
-            assertionFailure("SDK Key/Secret was not provided. Relpace sdkKey and sdkSecret at the top of this file with your SDK Key/Secret.")
-        case MobileRTCAuthError_KeyOrSecretWrong, MobileRTCAuthError_Unknown:
+        case .keyOrSecretEmpty:
+            assertionFailure("SDK Key/Secret was not provided. Replace sdkKey and sdkSecret at the top of this file with your SDK Key/Secret.")
+        case .keyOrSecretWrong, .unknown:
             assertionFailure("SDK Key/Secret is not valid.")
         default:
             assertionFailure("SDK Authorization failed with MobileRTCAuthError: \(returnValue).")
@@ -104,7 +120,7 @@ extension AppDelegate: MobileRTCAuthDelegate {
         case 0:
             print("Successfully logged in")
 
-            // This alerts the ViewController that log in was successful. This is not a neccesary action.
+            // This alerts the ViewController that log in was successful.
             NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
         case 1002:
             print("Password incorrect")
