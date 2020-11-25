@@ -62,7 +62,7 @@
     MobileRTCMeetingService *meetService = [[MobileRTC sharedRTC] getMeetingService];
 
     if (meetService) {
-        // Set the ViewContoller to be the MobileRTCMeetingServiceDelegate
+        // Set the ViewController to be the MobileRTCMeetingServiceDelegate
         meetService.delegate = self;
 
         // Create a MobileRTCMeetingJoinParam to provide the MobileRTCMeetingService with the necessary info to join a meeting.
@@ -93,7 +93,7 @@
     MobileRTCMeetingService *meetService = [[MobileRTC sharedRTC] getMeetingService];
 
     if (meetService) {
-        // Set the ViewContoller to be the MobileRTCMeetingServiceDelegate
+        // Set the ViewController to be the MobileRTCMeetingServiceDelegate
         meetService.delegate = self;
 
         // Create a MobileRTCMeetingStartParam to provide the MobileRTCMeetingService with the necessary info to start an instant meeting.
@@ -143,7 +143,7 @@
 }
 
 
-/// Creates alert for prompting the user to enter thier Zoom credentials for starting a meeting.
+/// Creates alert for prompting the user to enter their Zoom credentials for starting a meeting.
 - (void)presentLogInAlert {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Log in" message:@"" preferredStyle:UIAlertControllerStyleAlert];
 
@@ -193,10 +193,12 @@
 
 - (void)onMeetingError:(MobileRTCMeetError)error message:(NSString *)message {
     switch (error) {
+        case MobileRTCMeetError_Success:
+            NSLog(@"Successful meeting operation.");
         case MobileRTCMeetError_PasswordError:
             NSLog(@"Could not join or start meeting because the meeting password was incorrect.");
         default:
-            NSLog(@"Could not join or start meeting with MobileRTCMeetError: %u %@", error, message);
+            NSLog(@"Could not join or start meeting with MobileRTCMeetError: %lu %@", error, message);
     }
 }
 
@@ -208,7 +210,7 @@
 
 // Is called upon meeting state changes.
 - (void)onMeetingStateChange:(MobileRTCMeetingState)state {
-    NSLog(@"Current meeting state: %u", state);
+    NSLog(@"Current meeting state: %lu", state);
 }
 
 
