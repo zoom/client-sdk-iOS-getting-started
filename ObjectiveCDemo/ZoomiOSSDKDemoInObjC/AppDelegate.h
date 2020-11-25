@@ -11,7 +11,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MobileRTCAuthDelegate>
 
-/// Creates, Intializes, and Authorizes an instance of the Zoom SDK. This must be called before any other SDK functions.
+/// Creates, Initializes, and Authorizes an instance of the Zoom SDK. This must be called before any other SDK functions.
 ///
 /// Assign a MobileRTCAuthDelegate to listen to SDK authorization events. In real applications, SDK Key's and SDK Secret's should not be used as they are highly sensitive data. A JWT should be used instead.
 /// Do not leave a JWT, SDK Key, or SDK Secret anywhere that is not secured.
