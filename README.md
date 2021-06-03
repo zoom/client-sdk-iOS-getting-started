@@ -56,3 +56,6 @@ Got the error: ""ZoomiOSSDKDemo" requires a provisioning profile."
 Got the error: "Building for iOS Simulator, but the linked and embedded framework 'MobileRTC.framework' was built for iOS."
   1. You must connect a real iOS device and select it as the build destination.
 
+## Need help?
+
+If you're looking for help, try [Developer Support](https://devsupport.zoom.us) or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://zoom.us/docs/en-us/developer-support-plans.html) plans.
