@@ -1,5 +1,7 @@
 # Getting Started with the Zoom iOS SDK 
 
+Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html)
+
 The simplest and quickest way to start using the Zoom iOS SDK.
 This repo contains two seperate Xcode project folders. 
 
