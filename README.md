@@ -1,5 +1,7 @@
 # Getting Started with the Zoom iOS SDK 
 
+Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
+
 The simplest and quickest way to start using the Zoom iOS SDK.
 This repo contains two seperate Xcode project folders. 
 
@@ -15,18 +17,20 @@ Contains an iOS application built with Objective-C
 
 1. Install Xcode (10 or higher)
 2. Have physical iOS device ready (iOS 8 or higher)
-4. Sign into Xcode with valid AppleID or Apple Developer account to be able to generate provisioning profiles
-3. Obtain an SDK Key and Secret from the Zoom MarketPlace: https://marketplace.zoom.us/
+3. Sign into Xcode with valid AppleID or Apple Developer account to be able to generate provisioning profiles
+4. Obtain an SDK Key and Secret from the Zoom Marketplace: https://marketplace.zoom.us/
+5. Download the latest SDK version from the Zoom Marketplace
 
 ## Download and run
 
 1. Clone this repo. 
-2. For Swift, open the ZoomiOSSDKDemo xcodeproj file in Xcode. For Objective-C, open ZoomiOSSDKDemoInObjC.
-3. Navigate to ZoomiOSSDKDemo target -> Signing & Capabilities and provide the target with a provisioning profile. (Both the Swift and Objective-C projects can only be run on a physical device).
-4. If using the Swift version navigate to AppDelegate.swift. If using the Objective-C version, navigate to AppDelegate.m.  
-5. Replace "sdkKey" and "sdkClient" with the values from your ZoomMarketplace SDK credentials.
-6. On a seperate device, or in a browser: Start a real Zoom meeting. Once the meeting has begun, obtain the meeting number and meeting password. 
-7. Click run.
+2. Play the MobileRTC.xcframework folder and MobileRTCBundle in the root folder of this directory. This is the same directory as this README.
+3. For Swift, open the ZoomiOSSDKDemo xcodeproj file in Xcode. For Objective-C, open ZoomiOSSDKDemoInObjC.
+4. Navigate to ZoomiOSSDKDemo target -> Signing & Capabilities and provide the target with a provisioning profile. (Both the Swift and Objective-C projects can only be run on a physical device).
+5. If using the Swift version navigate to AppDelegate.swift. If using the Objective-C version, navigate to AppDelegate.m.  
+6. Replace "sdkKey" and "sdkClient" with the values from your ZoomMarketplace SDK credentials.
+7. On a seperate device, or in a browser: Start a real Zoom meeting. Once the meeting has begun, obtain the meeting number and meeting password. 
+8. Click run.
 
 ## Features
 
@@ -52,9 +56,6 @@ Got the error: "Bundle identifier is missing. ZoomiOSSDKDemo doesn't have a bund
 
 Got the error: ""ZoomiOSSDKDemo" requires a provisioning profile."
   1. You must supply Xcode a provisioning profile: https://ioscodesigning.com/generating-code-signing-files/
- 
-Got the error: "Building for iOS Simulator, but the linked and embedded framework 'MobileRTC.framework' was built for iOS."
-  1. You must connect a real iOS device and select it as the build destination.
 
 ## Need help?
 

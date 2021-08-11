@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,9 +12,9 @@
 		289335D324E6FAD300BBEB21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289335D124E6FAD300BBEB21 /* Main.storyboard */; };
 		289335D524E6FAD700BBEB21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 289335D424E6FAD700BBEB21 /* Assets.xcassets */; };
 		289335D824E6FAD700BBEB21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289335D624E6FAD700BBEB21 /* LaunchScreen.storyboard */; };
-		4C6503C32534B92200ECF8B9 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C6503C02534B90F00ECF8B9 /* MobileRTCResources.bundle */; };
-		4C6503C42534B93700ECF8B9 /* MobileRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6503BF2534B90F00ECF8B9 /* MobileRTC.framework */; };
-		4C6503C52534B93700ECF8B9 /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6503BF2534B90F00ECF8B9 /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28E33EFE26C480490095B3DB /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E33EFC26C480490095B3DB /* MobileRTC.xcframework */; };
+		28E33EFF26C480490095B3DB /* MobileRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28E33EFC26C480490095B3DB /* MobileRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28E33F0226C480820095B3DB /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28E33F0126C480820095B3DB /* MobileRTCResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C6503C52534B93700ECF8B9 /* MobileRTC.framework in Embed Frameworks */,
+				28E33EFF26C480490095B3DB /* MobileRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,8 +39,8 @@
 		289335D424E6FAD700BBEB21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		289335D724E6FAD700BBEB21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		289335D924E6FAD700BBEB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C6503BF2534B90F00ECF8B9 /* MobileRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTC.framework; path = ../MobileRTC.framework; sourceTree = "<group>"; };
-		4C6503C02534B90F00ECF8B9 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = ../MobileRTCResources.bundle; sourceTree = "<group>"; };
+		28E33EFC26C480490095B3DB /* MobileRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileRTC.xcframework; path = ../MobileRTC.xcframework; sourceTree = "<group>"; };
+		28E33F0126C480820095B3DB /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = ../MobileRTCResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C6503C42534B93700ECF8B9 /* MobileRTC.framework in Frameworks */,
+				28E33EFE26C480490095B3DB /* MobileRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,10 +58,9 @@
 		289335BF24E6FAD200BBEB21 = {
 			isa = PBXGroup;
 			children = (
-				4C6503BF2534B90F00ECF8B9 /* MobileRTC.framework */,
-				4C6503C02534B90F00ECF8B9 /* MobileRTCResources.bundle */,
 				289335CA24E6FAD200BBEB21 /* ZoomiOSSDKDemo */,
 				289335C924E6FAD200BBEB21 /* Products */,
+				28E33EFA26C480480095B3DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +83,15 @@
 				289335D924E6FAD700BBEB21 /* Info.plist */,
 			);
 			path = ZoomiOSSDKDemo;
+			sourceTree = "<group>";
+		};
+		28E33EFA26C480480095B3DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28E33EFC26C480490095B3DB /* MobileRTC.xcframework */,
+				28E33F0126C480820095B3DB /* MobileRTCResources.bundle */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				289335D824E6FAD700BBEB21 /* LaunchScreen.storyboard in Resources */,
+				28E33F0226C480820095B3DB /* MobileRTCResources.bundle in Resources */,
 				289335D524E6FAD700BBEB21 /* Assets.xcassets in Resources */,
 				289335D324E6FAD300BBEB21 /* Main.storyboard in Resources */,
-				4C6503C32534B92200ECF8B9 /* MobileRTCResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

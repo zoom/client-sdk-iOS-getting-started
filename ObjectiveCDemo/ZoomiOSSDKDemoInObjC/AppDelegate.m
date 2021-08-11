@@ -124,19 +124,19 @@
 }
 
 // Result of calling logIn(). 0 represents a successful log in attempt.
-- (void)onMobileRTCLoginReturn:(NSInteger)returnValue {
-    switch (returnValue) {
-        case 0:
+- (void)onMobileRTCLoginResult:(MobileRTCLoginFailReason)resultValue {
+    switch (resultValue) {
+        case MobileRTCLoginFailReason_Success:
             NSLog(@"Successfully logged in");
 
             // This alerts the ViewController that log in was successful. This is not a necessary action.
             [[NSNotificationCenter defaultCenter] postNotificationName:@"userLoggedIn" object:self];
             break;
-        case 1002:
+        case MobileRTCLoginFailReason_WrongPassword:
             NSLog(@"Password incorrect");
             break;
         default:
-            NSLog(@"Could not log in. Error code: %li", (long)returnValue);
+            NSLog(@"Could not log in. Error code: %li", (long)resultValue);
             break;
     }
 }

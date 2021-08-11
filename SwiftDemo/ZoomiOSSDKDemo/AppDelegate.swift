@@ -113,19 +113,20 @@ extension AppDelegate: MobileRTCAuthDelegate {
             assertionFailure("SDK Authorization failed with MobileRTCAuthError: \(returnValue).")
         }
     }
-
-    // Result of calling logIn(). 0 represents a successful log in attempt.
-    func onMobileRTCLoginReturn(_ returnValue: Int) {
-        switch returnValue {
-        case 0:
+    
+    // Result of calling logIn()
+    func onMobileRTCLoginResult(_ resultValue: MobileRTCLoginFailReason) {
+        switch resultValue {
+        case .success:
             print("Successfully logged in")
 
             // This alerts the ViewController that log in was successful.
             NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
-        case 1002:
+        case .wrongPassword:
             print("Password incorrect")
         default:
-            print("Could not log in. Error code: \(returnValue)")
+            print("Could not log in. Error code: \(resultValue)")
+
         }
     }
 
